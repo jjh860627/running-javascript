@@ -34,9 +34,9 @@
  		}
 	}
 	~~~
-	
 	- javascript에는 접근제어자가 없음
 	- 프로퍼티를 보호해야 한다면 스코프를 이용하고 WeakMap 인스턴스를 사용
+	
 	~~~javascript
 	const Car = (function(){
 		const carProps = new WeakMap(); //WeakMap 사용
@@ -75,7 +75,6 @@
 	- 클래스는 Car 처럼 항상 첫글자를 대문자로 표기하는게 일반적(파스칼 표기법)
 	- 동적 디스패치 : 객체의 프로퍼티나 메서드에 접근하려고  할 때 해당 객체에 존재 하지 않으면 객체의 프로토타입에서 해당 프로퍼티나 메서드를 찾고 프로토타입에서 찾지 못하면 프로토타입의 프로토타입까지 찾음(부모)
 	- 인스턴스에서 프로토타입에 존재하는 메서드나 프로퍼티를 정의하면 프로토타입에 있는 것을 가리는 효과가 나타남
-
 	### 9.2.4 정적 메서드
 	- static 키워드를 사용한 메서드
 	- 특정 인스턴스에 적용되지 않고 클래스명.xxx() 와 같이 호출하는게 좋음.
@@ -91,7 +90,6 @@
 			this.vin = Car.getNextVin();
 		}
 	}
-	
 	Car.nextVin = 0;
 	
 	const car1 = new Car("Tesla", "S");
@@ -104,8 +102,115 @@
 	console.log(car3.vin);
 	~~~	
  
- 	### 9.2.4 상속
+ 	### 9.2.5 상속
  	- 클래스의 인스턴스는 클래스의 기능을 모두 상속
  	- 자바스크립트는 프로토타입 체인(객체 => 객체의 프로토타입 => 프로토타입의 프로토타입(상속된 부모)으로 메서드나 프로퍼티를 찾음
+ 	- extends 키워드를 사용해 클래스를 상속받음.
+ 	- 반드시 생성자에서 상속받은 부모클래스의 생성자(super())를 호출해 줘야함.(자바의 경우는 default생성자의 경우는 생략가능)
+ 	###9.2.6 다형성
+ 	- 객체지향 언어에서 여러 슈퍼클래스의 멤버인 인스턴스의 성질을 말함
+ 	- instanceof 연산자로 객체의 클래스 확인
+ 	- 자바스크립트의 모든 객체는 Object 클래스의 서브클래스임.
+ 	###9.2.7 객체 프로퍼티 나열 다시보기
+ 	- obj.hasOwnProperty(x)는 obj에 프로퍼티 x가 있다면 true를 반환, 정의되지 않았거나 프로토타입 체인에만 정의된 경우는 false 반환
+ 	- 프로퍼티를 프로토타입에 정의하지 못하도록 강제하는 장치가 없으므로 항상 "hasOwnProperty"를 사용하는 편이 좋음.
+ 	- 슈퍼클래스 생성장에서 선언한 프로퍼티는 서브클래스 인스턴스에도 정의됨(프로토타입에 정의되는것이 아님)
  	
+ 	~~~javascript
+ 		class Super{
+ 			constructor(){
+ 				this.name = 'Super';
+ 				this.isSuper = true;
+ 			}
+		}
+		//클래스의 프로토타입에 sneaky 프로퍼티 할당
+		Super.prototype.sneaky = 'not recommended'; //권장하지 않음
+		
+		class Sub extends Super{
+			constructor(){
+				super();
+				this.name = 'Sub';
+				this.isSub = true;
+			}
+		}
+		
+		const obj = new Sub();
+		
+		for(let p in obj){
+			console.log(`${p}: ${obj[p]}` + (obj.hasOwnProperty(p) ? '' : '(inherited)'));
+		}
+	~~~
+	
+	###9.2.8 문자열 표현
+	- Object 클래스의 toString() 정의하여 사용
+	
+	###9.3 다중상속, 믹스인, 인터페이스
+	- 자바스크립트에는 다중상속을 지원하지 않으며 인터페이스 또한 없음.
+	- 자바스크립트가 다중 상속이 필요한 문제에 대한 해답으로 내놓은 개념이 믹스인
+	~~~javascript
+		class InsuarancePolicy{}
+		const ADD_POLICY = Symbol();
+		const GET_POLICY = Symbol();
+		const IS_INSURED = Symbol();
+		const _POLICY = Symbol();
+		
+		function makeInsurable(o){
+			o[ADD_POLICY] = function(p){ this[_POLICY] = p; }
+			o[GET_POLICY] = function(){ return this[_POLICY]; }
+			o[IS_INSURED] = function(){ return !!this[_POLICY]; }
+		}
+		
+		makeInsurable(Car.prototype); //Car의 인스턴스가 아닌 prototype 자체를 넘김으로써 모든 Car Instance에 일괄적용
+	~~~
  	
+# Chapter10. 맵과 셋
+
+## 10.1 맵
+ - set(key, value) : 맵에 값 추가, 같은 키를 다시 set하는 경우 value가 교체됨
+ - get(key) : 맵에 저장된 해당 키값에 해당하는 value을 가져옴
+ - has(key) : 맵에 키가 존재하는지 확인
+ - size 프로퍼티 : 맵의 사이즈 
+ - keys() : 맵의 키를 Iterable로 반환
+ - values() : 맵의 value를 Iterable로 반환
+ - entirs() : 맵의 key, value 쌍을 배열로 반환([0] : 키, [1] : value)
+ - delete(key) : 맵의 요소를 지움
+ - clear() : 맵의 모든 요소를 지움
+ 
+ ## 10.2 위크맵
+ - Weak맵의 키는 반드시 객체여야 함
+ - WeakMap의 키는 가비지 콜렉션에 포함 될수 있음.
+ - WeakMap은 이터러블이 아니며 clear 메서드가 없음 
+ ~~~javascript
+ 	const SecretHolder = (function(){
+ 		const secrets = new WeakMap();
+ 		return class{
+ 			setSecret(secret){
+ 				secrets.set(this, secret);
+ 			}
+ 			getSecret(){
+ 				return secrets.get(this);
+ 			}
+ 		}
+ 	})();
+ 	
+ 	const a = new SecretHolder();
+ 	const b = new SecretHolder();
+ 	
+ 	a.setSecret('secret A');
+ 	b.setSecret('secret B');
+ 	
+ 	console.log(`a secret ${a.getSecret()}`);
+ 	console.log(`b secret ${b.getSecret()}`);
+ ~~~
+
+## 10.3 셋
+- 셋은 중복을 허용하지 않는 데이터 집합
+- add(value) : 셋에 값을 추가, 이미 있는 값인 경우 아무일도 일어나지 않음.
+- size 프로퍼티 : 셋의 사이즈
+- delete(value) : 셋의 value 제거
+ 	
+## 10.4 위크셋
+- WeakSet의 키는 반드시 객체여야 함
+- WeakSet의 키는 가비지 콜렉션에 포함 될수 있음.
+- WeakSet은 이터러블이 아니며 clear 메서드가 없음 
+ 
