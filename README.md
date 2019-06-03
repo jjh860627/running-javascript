@@ -57,7 +57,7 @@
 		}
 		return Car;
 	})();
-	
+	~~~
 	### 9.2.2 클래스는 함수다
 	- ES5 에서는 Car 클래스를 아래와 같이 생성
 	~~~javascript
@@ -68,7 +68,7 @@
 		this.userGear = this.userGears[0];
 	}
 	- ES6의 클래스의 경우도 typeof 연산자의 결과가 function임(하지만 class의 경우는 new 키워드를 반드시 사용해야함)
-	~~~	
+	~~~
 	### 9.2.3 프로토타입
 	- 클래스의 인스턴스에서 사용할 수 있는 메서드 = 프로토타입 메서드
 	- 프로토타입 메서드는 Car.prototype.shift 처럼 표기
