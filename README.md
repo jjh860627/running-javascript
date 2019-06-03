@@ -12,4 +12,25 @@
  ## 9.2 객체지향 프로그래밍
 - 데이터와 기능을 논리적으로 묶어 놓은 패러다임
  	### 9.2.1 클래스와 인스턴스 생성
- 	- 
+ 	- 클래스의 생성자는 constructor(){} 와 같이 정의
+ 	- 해당 클래스의 인스턴스를 만들 때는 "new" 키워드 사용
+ 	- "instanceof" 연산자를 이용해 객체가 클래스의 인스턴스인지 확인 가능(java와 동일)
+ 	
+ 	~~~javascript
+ 	class Car{
+ 		constructor(make, model){
+ 			this.make = make;
+ 			this.model = model;
+ 			this.userGears = ['P', 'N', 'R', 'D'];
+ 			this.userGear = this.userGears[0];
+ 		}
+ 		
+ 		shift(gear){
+ 			if(this.userGears.indexOf(gear) < 0){
+ 				throw new Error(`Invalid gear: ${gear}`);
+ 			}
+ 			this.userGear = gear;
+ 		}
+	}
+	~~~
+ 	
