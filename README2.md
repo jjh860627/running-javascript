@@ -5,8 +5,32 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의존하는 개념
 - 이터레이션 프로토콜 조건
    - 심볼메소드 Symbol.iterator가 존재
    - Symbol.iterator 메소드는 value와 done 프로퍼티가 있는 객체를 반환하는 next() 메서드가 존재
-
-
+	~~~javascript
+	class Log{
+		constructor(){
+			this.messages = [];
+		}
+		
+		add(message){
+			this.messages.push({message, timestamp: Date.now() });
+		}
+		
+		[Symbol.iterator](){
+			//return this.messages.values();
+			let i = 0;
+			const messages = this.messages;
+			return {
+				next(){
+					if(i >= messages.length){
+						return {value: undefined, done: true};
+					}else{
+						return {value : messages[i++], done: false};
+					}
+				}
+			}
+		}
+	}
+	~~~
 -  객체의 프로퍼티 나열은 배열과 달리 순서가 보장 되지 않음
 	### 9.1.1 for...in
 	- 객체 프로퍼티 나열은 for ... in을 사용 (Iterable 객체는 for ... of 사용)
