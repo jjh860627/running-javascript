@@ -205,5 +205,26 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의존하는 개념
 	console.log(sum([1,2,3], x => Math.pow(x, 3)));
 ~~~
 ## 13.6.3 함수를 반환하는 함수
+~~~javascript
+	function sum(arr, f){
+		if(typeof f != 'function') f = x => x; //function이 없는 경우 매개변수 그대로 반환하는 함수 사용
+		return arr.reduce((a,x) => a += f(x), 0);
+	}
+	function newSummer(f){
+		return arr => sum(arr, f);
+	}
 	
-	
+	const sumOfSquares = newSummer(x => x*x);
+	const sumOfCubes = newSummer(x => Math.pow(x,3));
+	console.log(sumOfSquares([1,2,3]));
+	console.log(sumOfCubes([1,2,3]));
+~~~
+
+##13.7 재귀
+자기 자신을 호출 하는 함수로 종료 조건이 있어야 함.
+~~~javascript
+	function fact(n){
+		if(n === 1) return 1;
+		return n * fact(n-1);
+	}
+~~~
