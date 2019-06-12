@@ -1,31 +1,31 @@
-# Chapter9. °´Ã¼¿Í °´Ã¼ÁöÇâ ÇÁ·Î±×·¡¹Ö
+# Chapter9. ê°ì²´ì™€ ê°ì²´ì§€í–¥ í”„ë¡œê·¸ëž˜ë°
 
-## 9.1 ÇÁ·ÎÆÛÆ¼ ³ª¿­
--  °´Ã¼ÀÇ ÇÁ·ÎÆÛÆ¼ ³ª¿­Àº ¹è¿­°ú ´Þ¸® ¼ø¼­°¡ º¸Àå µÇÁö ¾ÊÀ½
+## 9.1 í”„ë¡œí¼í‹° ë‚˜ì—´
+-  ê°ì²´ì˜ í”„ë¡œí¼í‹° ë‚˜ì—´ì€ ë°°ì—´ê³¼ ë‹¬ë¦¬ ìˆœì„œê°€ ë³´ìž¥ ë˜ì§€ ì•ŠìŒ
 	### 9.1.1 for...in
-	- °´Ã¼ ÇÁ·ÎÆÛÆ¼ ³ª¿­Àº for ... inÀ» »ç¿ë (Iterable °´Ã¼´Â for ... of »ç¿ë)
-	- for ... in ·çÇÁ¿¡´Â Å°°¡ ½Éº¼ÀÎ ÇÁ·ÎÆÛÆ¼´Â Æ÷ÇÔµÇÁö ¾ÊÀ½
-	- ¿¹¿Ü»óÈ²À» ÇÇÇÏ±â À§ÇØ hasOwnProperty¸¦ Ã¼Å©ÇÏ´Â°Ô ÁÁÀ½
+	- ê°ì²´ í”„ë¡œí¼í‹° ë‚˜ì—´ì€ for ... inì„ ì‚¬ìš© (Iterable ê°ì²´ëŠ” for ... of ì‚¬ìš©)
+	- for ... in ë£¨í”„ì—ëŠ” í‚¤ê°€ ì‹¬ë³¼ì¸ í”„ë¡œí¼í‹°ëŠ” í¬í•¨ë˜ì§€ ì•ŠìŒ
+	- ì˜ˆì™¸ìƒí™©ì„ í”¼í•˜ê¸° ìœ„í•´ hasOwnPropertyë¥¼ ì²´í¬í•˜ëŠ”ê²Œ ì¢‹ìŒ
  	### 9.1.2 Object.keys()
-	- °´Ã¼¿¡¼­ ³ª¿­ °¡´ÉÇÑ ¹®ÀÚ¿­ ÇÁ·ÎÆÛÆ¼¸¦ ¹è¿­·Î ¹ÝÈ¯
-	- hasOwnProperty¸¦ Ã¼Å©ÇÒ ÇÊ¿ä´Â ¾øÀ½.
- ## 9.2 °´Ã¼ÁöÇâ ÇÁ·Î±×·¡¹Ö
-- µ¥ÀÌÅÍ¿Í ±â´ÉÀ» ³í¸®ÀûÀ¸·Î ¹­¾î ³õÀº ÆÐ·¯´ÙÀÓ
- 	### 9.2.1 Å¬·¡½º¿Í ÀÎ½ºÅÏ½º »ý¼º
- 	- Å¬·¡½ºÀÇ »ý¼ºÀÚ´Â constructor(){} ¿Í °°ÀÌ Á¤ÀÇ
- 	- ÇØ´ç Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º¸¦ ¸¸µé ¶§´Â "new" Å°¿öµå »ç¿ë
- 	- "instanceof" ¿¬»êÀÚ¸¦ ÀÌ¿ëÇØ °´Ã¼°¡ Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½ºÀÎÁö È®ÀÎ °¡´É(java¿Í µ¿ÀÏ)
+	- ê°ì²´ì—ì„œ ë‚˜ì—´ ê°€ëŠ¥í•œ ë¬¸ìžì—´ í”„ë¡œí¼í‹°ë¥¼ ë°°ì—´ë¡œ ë°˜í™˜
+	- hasOwnPropertyë¥¼ ì²´í¬í•  í•„ìš”ëŠ” ì—†ìŒ.
+ ## 9.2 ê°ì²´ì§€í–¥ í”„ë¡œê·¸ëž˜ë°
+- ë°ì´í„°ì™€ ê¸°ëŠ¥ì„ ë…¼ë¦¬ì ìœ¼ë¡œ ë¬¶ì–´ ë†“ì€ íŒ¨ëŸ¬ë‹¤ìž„
+ 	### 9.2.1 í´ëž˜ìŠ¤ì™€ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
+ 	- í´ëž˜ìŠ¤ì˜ ìƒì„±ìžëŠ” constructor(){} ì™€ ê°™ì´ ì •ì˜
+ 	- í•´ë‹¹ í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ë§Œë“¤ ë•ŒëŠ” "new" í‚¤ì›Œë“œ ì‚¬ìš©
+ 	- "instanceof" ì—°ì‚°ìžë¥¼ ì´ìš©í•´ ê°ì²´ê°€ í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ì¸ì§€ í™•ì¸ ê°€ëŠ¥(javaì™€ ë™ì¼)
 
  	~~~javascript
  	class Car{
- 		//»ý¼ºÀÚ
+ 		//ìƒì„±ìž
  		constructor(make, model){
  			this.make = make;
  			this.model = model;
  			this.userGears = ['P', 'N', 'R', 'D'];
  			this.userGear = this.userGears[0];
  		}
- 		//¸Þ¼Òµå¿¡´Â function Å°¿öµå¸¦ ³ÖÁö ¾ÊÀ½.
+ 		//ë©”ì†Œë“œì—ëŠ” function í‚¤ì›Œë“œë¥¼ ë„£ì§€ ì•ŠìŒ.
  		shift(gear){
  			if(this.userGears.indexOf(gear) < 0){
  				throw new Error(`Invalid gear: ${gear}`);
@@ -34,12 +34,12 @@
  		}
 	}
 	~~~
-	- javascript¿¡´Â Á¢±ÙÁ¦¾îÀÚ°¡ ¾øÀ½
-	- ÇÁ·ÎÆÛÆ¼¸¦ º¸È£ÇØ¾ß ÇÑ´Ù¸é ½ºÄÚÇÁ¸¦ ÀÌ¿ëÇÏ°í WeakMap ÀÎ½ºÅÏ½º¸¦ »ç¿ë
+	- javascriptì—ëŠ” ì ‘ê·¼ì œì–´ìžê°€ ì—†ìŒ
+	- í”„ë¡œí¼í‹°ë¥¼ ë³´í˜¸í•´ì•¼ í•œë‹¤ë©´ ìŠ¤ì½”í”„ë¥¼ ì´ìš©í•˜ê³  WeakMap ì¸ìŠ¤í„´ìŠ¤ë¥¼ ì‚¬ìš©
 	
 	~~~javascript
 	const Car = (function(){
-		const carProps = new WeakMap(); //WeakMap »ç¿ë
+		const carProps = new WeakMap(); //WeakMap ì‚¬ìš©
 		const userGears = ['P', 'N', 'R', 'D'];
 		class Car{
 			constructor(make, model){
@@ -58,8 +58,8 @@
 		return Car;
 	})();
 	~~~
-	### 9.2.2 Å¬·¡½º´Â ÇÔ¼ö´Ù
-	- ES5 ¿¡¼­´Â Car Å¬·¡½º¸¦ ¾Æ·¡¿Í °°ÀÌ »ý¼º
+	### 9.2.2 í´ëž˜ìŠ¤ëŠ” í•¨ìˆ˜ë‹¤
+	- ES5 ì—ì„œëŠ” Car í´ëž˜ìŠ¤ë¥¼ ì•„ëž˜ì™€ ê°™ì´ ìƒì„±
 	~~~javascript
 	function Car(make, model){
 		this.make = make;
@@ -67,22 +67,22 @@
 		this.userGears = ['P', 'N', 'R', 'D'];
 		this.userGear = this.userGears[0];
 	}
-	- ES6ÀÇ Å¬·¡½ºÀÇ °æ¿ìµµ typeof ¿¬»êÀÚÀÇ °á°ú°¡ functionÀÓ(ÇÏÁö¸¸ classÀÇ °æ¿ì´Â new Å°¿öµå¸¦ ¹Ýµå½Ã »ç¿ëÇØ¾ßÇÔ)
+	- ES6ì˜ í´ëž˜ìŠ¤ì˜ ê²½ìš°ë„ typeof ì—°ì‚°ìžì˜ ê²°ê³¼ê°€ functionìž„(í•˜ì§€ë§Œ classì˜ ê²½ìš°ëŠ” new í‚¤ì›Œë“œë¥¼ ë°˜ë“œì‹œ ì‚¬ìš©í•´ì•¼í•¨)
 	~~~
-	### 9.2.3 ÇÁ·ÎÅäÅ¸ÀÔ
-	- Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖ´Â ¸Þ¼­µå = ÇÁ·ÎÅäÅ¸ÀÔ ¸Þ¼­µå
-	- ÇÁ·ÎÅäÅ¸ÀÔ ¸Þ¼­µå´Â Car.prototype.shift Ã³·³ Ç¥±â
-	- Å¬·¡½º´Â Car Ã³·³ Ç×»ó Ã¹±ÛÀÚ¸¦ ´ë¹®ÀÚ·Î Ç¥±âÇÏ´Â°Ô ÀÏ¹ÝÀû(ÆÄ½ºÄ® Ç¥±â¹ý)
-	- µ¿Àû µð½ºÆÐÄ¡ : °´Ã¼ÀÇ ÇÁ·ÎÆÛÆ¼³ª ¸Þ¼­µå¿¡ Á¢±ÙÇÏ·Á°í  ÇÒ ¶§ ÇØ´ç °´Ã¼¿¡ Á¸Àç ÇÏÁö ¾ÊÀ¸¸é °´Ã¼ÀÇ ÇÁ·ÎÅäÅ¸ÀÔ¿¡¼­ ÇØ´ç ÇÁ·ÎÆÛÆ¼³ª ¸Þ¼­µå¸¦ Ã£°í ÇÁ·ÎÅäÅ¸ÀÔ¿¡¼­ Ã£Áö ¸øÇÏ¸é ÇÁ·ÎÅäÅ¸ÀÔÀÇ ÇÁ·ÎÅäÅ¸ÀÔ±îÁö Ã£À½(ºÎ¸ð)
-	- ÀÎ½ºÅÏ½º¿¡¼­ ÇÁ·ÎÅäÅ¸ÀÔ¿¡ Á¸ÀçÇÏ´Â ¸Þ¼­µå³ª ÇÁ·ÎÆÛÆ¼¸¦ Á¤ÀÇÇÏ¸é ÇÁ·ÎÅäÅ¸ÀÔ¿¡ ÀÖ´Â °ÍÀ» °¡¸®´Â È¿°ú°¡ ³ªÅ¸³²
-	### 9.2.4 Á¤Àû ¸Þ¼­µå
-	- static Å°¿öµå¸¦ »ç¿ëÇÑ ¸Þ¼­µå
-	- Æ¯Á¤ ÀÎ½ºÅÏ½º¿¡ Àû¿ëµÇÁö ¾Ê°í Å¬·¡½º¸í.xxx() ¿Í °°ÀÌ È£ÃâÇÏ´Â°Ô ÁÁÀ½.
+	### 9.2.3 í”„ë¡œí† íƒ€ìž…
+	- í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ë©”ì„œë“œ = í”„ë¡œí† íƒ€ìž… ë©”ì„œë“œ
+	- í”„ë¡œí† íƒ€ìž… ë©”ì„œë“œëŠ” Car.prototype.shift ì²˜ëŸ¼ í‘œê¸°
+	- í´ëž˜ìŠ¤ëŠ” Car ì²˜ëŸ¼ í•­ìƒ ì²«ê¸€ìžë¥¼ ëŒ€ë¬¸ìžë¡œ í‘œê¸°í•˜ëŠ”ê²Œ ì¼ë°˜ì (íŒŒìŠ¤ì¹¼ í‘œê¸°ë²•)
+	- ë™ì  ë””ìŠ¤íŒ¨ì¹˜ : ê°ì²´ì˜ í”„ë¡œí¼í‹°ë‚˜ ë©”ì„œë“œì— ì ‘ê·¼í•˜ë ¤ê³   í•  ë•Œ í•´ë‹¹ ê°ì²´ì— ì¡´ìž¬ í•˜ì§€ ì•Šìœ¼ë©´ ê°ì²´ì˜ í”„ë¡œí† íƒ€ìž…ì—ì„œ í•´ë‹¹ í”„ë¡œí¼í‹°ë‚˜ ë©”ì„œë“œë¥¼ ì°¾ê³  í”„ë¡œí† íƒ€ìž…ì—ì„œ ì°¾ì§€ ëª»í•˜ë©´ í”„ë¡œí† íƒ€ìž…ì˜ í”„ë¡œí† íƒ€ìž…ê¹Œì§€ ì°¾ìŒ(ë¶€ëª¨)
+	- ì¸ìŠ¤í„´ìŠ¤ì—ì„œ í”„ë¡œí† íƒ€ìž…ì— ì¡´ìž¬í•˜ëŠ” ë©”ì„œë“œë‚˜ í”„ë¡œí¼í‹°ë¥¼ ì •ì˜í•˜ë©´ í”„ë¡œí† íƒ€ìž…ì— ìžˆëŠ” ê²ƒì„ ê°€ë¦¬ëŠ” íš¨ê³¼ê°€ ë‚˜íƒ€ë‚¨
+	### 9.2.4 ì •ì  ë©”ì„œë“œ
+	- static í‚¤ì›Œë“œë¥¼ ì‚¬ìš©í•œ ë©”ì„œë“œ
+	- íŠ¹ì • ì¸ìŠ¤í„´ìŠ¤ì— ì ìš©ë˜ì§€ ì•Šê³  í´ëž˜ìŠ¤ëª….xxx() ì™€ ê°™ì´ í˜¸ì¶œí•˜ëŠ”ê²Œ ì¢‹ìŒ.
 	
 	~~~javascript
 	class Car{
 		static getNextVin(){
-			return Car.nextVin++; //this.nextVinÀÌ¶ó°í ½áµµ µÇÁö¸¸ Á¤Àû ¸Þ¼­µåÀÓÀ» »ó±âÇÏ±â À§ÇØ Car¸¦ ¾¸
+			return Car.nextVin++; //this.nextVinì´ë¼ê³  ì¨ë„ ë˜ì§€ë§Œ ì •ì  ë©”ì„œë“œìž„ì„ ìƒê¸°í•˜ê¸° ìœ„í•´ Carë¥¼ ì”€
 		}
 		constructor(make, model){
 			this.make = make;
@@ -102,21 +102,21 @@
 	console.log(car3.vin);
 	~~~	
  
- 	### 9.2.5 »ó¼Ó
- 	- Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º´Â Å¬·¡½ºÀÇ ±â´ÉÀ» ¸ðµÎ »ó¼Ó
- 	- ÀÚ¹Ù½ºÅ©¸³Æ®´Â ÇÁ·ÎÅäÅ¸ÀÔ Ã¼ÀÎ(°´Ã¼ => °´Ã¼ÀÇ ÇÁ·ÎÅäÅ¸ÀÔ => ÇÁ·ÎÅäÅ¸ÀÔÀÇ ÇÁ·ÎÅäÅ¸ÀÔ(»ó¼ÓµÈ ºÎ¸ð)À¸·Î ¸Þ¼­µå³ª ÇÁ·ÎÆÛÆ¼¸¦ Ã£À½
- 	- extends Å°¿öµå¸¦ »ç¿ëÇØ Å¬·¡½º¸¦ »ó¼Ó¹ÞÀ½.
- 	- ¹Ýµå½Ã »ý¼ºÀÚ¿¡¼­ »ó¼Ó¹ÞÀº ºÎ¸ðÅ¬·¡½ºÀÇ »ý¼ºÀÚ(super())¸¦ È£ÃâÇØ Áà¾ßÇÔ.(ÀÚ¹ÙÀÇ °æ¿ì´Â default»ý¼ºÀÚÀÇ °æ¿ì´Â »ý·«°¡´É)
+ 	### 9.2.5 ìƒì†
+ 	- í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ëŠ” í´ëž˜ìŠ¤ì˜ ê¸°ëŠ¥ì„ ëª¨ë‘ ìƒì†
+ 	- ìžë°”ìŠ¤í¬ë¦½íŠ¸ëŠ” í”„ë¡œí† íƒ€ìž… ì²´ì¸(ê°ì²´ => ê°ì²´ì˜ í”„ë¡œí† íƒ€ìž… => í”„ë¡œí† íƒ€ìž…ì˜ í”„ë¡œí† íƒ€ìž…(ìƒì†ëœ ë¶€ëª¨)ìœ¼ë¡œ ë©”ì„œë“œë‚˜ í”„ë¡œí¼í‹°ë¥¼ ì°¾ìŒ
+ 	- extends í‚¤ì›Œë“œë¥¼ ì‚¬ìš©í•´ í´ëž˜ìŠ¤ë¥¼ ìƒì†ë°›ìŒ.
+ 	- ë°˜ë“œì‹œ ìƒì„±ìžì—ì„œ ìƒì†ë°›ì€ ë¶€ëª¨í´ëž˜ìŠ¤ì˜ ìƒì„±ìž(super())ë¥¼ í˜¸ì¶œí•´ ì¤˜ì•¼í•¨.(ìžë°”ì˜ ê²½ìš°ëŠ” defaultìƒì„±ìžì˜ ê²½ìš°ëŠ” ìƒëžµê°€ëŠ¥)
  	
- 	### 9.2.6 ´ÙÇü¼º
- 	- °´Ã¼ÁöÇâ ¾ð¾î¿¡¼­ ¿©·¯ ½´ÆÛÅ¬·¡½ºÀÇ ¸â¹öÀÎ ÀÎ½ºÅÏ½ºÀÇ ¼ºÁúÀ» ¸»ÇÔ
- 	- instanceof ¿¬»êÀÚ·Î °´Ã¼ÀÇ Å¬·¡½º È®ÀÎ
- 	- ÀÚ¹Ù½ºÅ©¸³Æ®ÀÇ ¸ðµç °´Ã¼´Â Object Å¬·¡½ºÀÇ ¼­ºêÅ¬·¡½ºÀÓ.
+ 	### 9.2.6 ë‹¤í˜•ì„±
+ 	- ê°ì²´ì§€í–¥ ì–¸ì–´ì—ì„œ ì—¬ëŸ¬ ìŠˆí¼í´ëž˜ìŠ¤ì˜ ë©¤ë²„ì¸ ì¸ìŠ¤í„´ìŠ¤ì˜ ì„±ì§ˆì„ ë§í•¨
+ 	- instanceof ì—°ì‚°ìžë¡œ ê°ì²´ì˜ í´ëž˜ìŠ¤ í™•ì¸
+ 	- ìžë°”ìŠ¤í¬ë¦½íŠ¸ì˜ ëª¨ë“  ê°ì²´ëŠ” Object í´ëž˜ìŠ¤ì˜ ì„œë¸Œí´ëž˜ìŠ¤ìž„.
 
- 	### 9.2.7 °´Ã¼ ÇÁ·ÎÆÛÆ¼ ³ª¿­ ´Ù½Ãº¸±â
- 	- obj.hasOwnProperty(x)´Â obj¿¡ ÇÁ·ÎÆÛÆ¼ x°¡ ÀÖ´Ù¸é true¸¦ ¹ÝÈ¯, Á¤ÀÇµÇÁö ¾Ê¾Ò°Å³ª ÇÁ·ÎÅäÅ¸ÀÔ Ã¼ÀÎ¿¡¸¸ Á¤ÀÇµÈ °æ¿ì´Â false ¹ÝÈ¯
- 	- ÇÁ·ÎÆÛÆ¼¸¦ ÇÁ·ÎÅäÅ¸ÀÔ¿¡ Á¤ÀÇÇÏÁö ¸øÇÏµµ·Ï °­Á¦ÇÏ´Â ÀåÄ¡°¡ ¾øÀ¸¹Ç·Î Ç×»ó "hasOwnProperty"¸¦ »ç¿ëÇÏ´Â ÆíÀÌ ÁÁÀ½.
- 	- ½´ÆÛÅ¬·¡½º »ý¼ºÀå¿¡¼­ ¼±¾ðÇÑ ÇÁ·ÎÆÛÆ¼´Â ¼­ºêÅ¬·¡½º ÀÎ½ºÅÏ½º¿¡µµ Á¤ÀÇµÊ(ÇÁ·ÎÅäÅ¸ÀÔ¿¡ Á¤ÀÇµÇ´Â°ÍÀÌ ¾Æ´Ô)
+ 	### 9.2.7 ê°ì²´ í”„ë¡œí¼í‹° ë‚˜ì—´ ë‹¤ì‹œë³´ê¸°
+ 	- obj.hasOwnProperty(x)ëŠ” objì— í”„ë¡œí¼í‹° xê°€ ìžˆë‹¤ë©´ trueë¥¼ ë°˜í™˜, ì •ì˜ë˜ì§€ ì•Šì•˜ê±°ë‚˜ í”„ë¡œí† íƒ€ìž… ì²´ì¸ì—ë§Œ ì •ì˜ëœ ê²½ìš°ëŠ” false ë°˜í™˜
+ 	- í”„ë¡œí¼í‹°ë¥¼ í”„ë¡œí† íƒ€ìž…ì— ì •ì˜í•˜ì§€ ëª»í•˜ë„ë¡ ê°•ì œí•˜ëŠ” ìž¥ì¹˜ê°€ ì—†ìœ¼ë¯€ë¡œ í•­ìƒ "hasOwnProperty"ë¥¼ ì‚¬ìš©í•˜ëŠ” íŽ¸ì´ ì¢‹ìŒ.
+ 	- ìŠˆí¼í´ëž˜ìŠ¤ ìƒì„±ìž¥ì—ì„œ ì„ ì–¸í•œ í”„ë¡œí¼í‹°ëŠ” ì„œë¸Œí´ëž˜ìŠ¤ ì¸ìŠ¤í„´ìŠ¤ì—ë„ ì •ì˜ë¨(í”„ë¡œí† íƒ€ìž…ì— ì •ì˜ë˜ëŠ”ê²ƒì´ ì•„ë‹˜)
  	
  	~~~javascript
  		class Super{
@@ -125,8 +125,8 @@
  				this.isSuper = true;
  			}
 		}
-		//Å¬·¡½ºÀÇ ÇÁ·ÎÅäÅ¸ÀÔ¿¡ sneaky ÇÁ·ÎÆÛÆ¼ ÇÒ´ç
-		Super.prototype.sneaky = 'not recommended'; //±ÇÀåÇÏÁö ¾ÊÀ½
+		//í´ëž˜ìŠ¤ì˜ í”„ë¡œí† íƒ€ìž…ì— sneaky í”„ë¡œí¼í‹° í• ë‹¹
+		Super.prototype.sneaky = 'not recommended'; //ê¶Œìž¥í•˜ì§€ ì•ŠìŒ
 		
 		class Sub extends Super{
 			constructor(){
@@ -143,12 +143,12 @@
 		}
 	~~~
 	
-	### 9.2.8 ¹®ÀÚ¿­ Ç¥Çö
-	- Object Å¬·¡½ºÀÇ toString() Á¤ÀÇÇÏ¿© »ç¿ë
+	### 9.2.8 ë¬¸ìžì—´ í‘œí˜„
+	- Object í´ëž˜ìŠ¤ì˜ toString() ì •ì˜í•˜ì—¬ ì‚¬ìš©
 	
-	### 9.3 ´ÙÁß»ó¼Ó, ¹Í½ºÀÎ, ÀÎÅÍÆäÀÌ½º
-	- ÀÚ¹Ù½ºÅ©¸³Æ®¿¡´Â ´ÙÁß»ó¼ÓÀ» Áö¿øÇÏÁö ¾ÊÀ¸¸ç ÀÎÅÍÆäÀÌ½º ¶ÇÇÑ ¾øÀ½.
-	- ÀÚ¹Ù½ºÅ©¸³Æ®°¡ ´ÙÁß »ó¼ÓÀÌ ÇÊ¿äÇÑ ¹®Á¦¿¡ ´ëÇÑ ÇØ´äÀ¸·Î ³»³õÀº °³³äÀÌ ¹Í½ºÀÎ
+	### 9.3 ë‹¤ì¤‘ìƒì†, ë¯¹ìŠ¤ì¸, ì¸í„°íŽ˜ì´ìŠ¤
+	- ìžë°”ìŠ¤í¬ë¦½íŠ¸ì—ëŠ” ë‹¤ì¤‘ìƒì†ì„ ì§€ì›í•˜ì§€ ì•Šìœ¼ë©° ì¸í„°íŽ˜ì´ìŠ¤ ë˜í•œ ì—†ìŒ.
+	- ìžë°”ìŠ¤í¬ë¦½íŠ¸ê°€ ë‹¤ì¤‘ ìƒì†ì´ í•„ìš”í•œ ë¬¸ì œì— ëŒ€í•œ í•´ë‹µìœ¼ë¡œ ë‚´ë†“ì€ ê°œë…ì´ ë¯¹ìŠ¤ì¸
 	~~~javascript
 		class InsuarancePolicy{}
 		const ADD_POLICY = Symbol();
@@ -162,26 +162,26 @@
 			o[IS_INSURED] = function(){ return !!this[_POLICY]; }
 		}
 		
-		makeInsurable(Car.prototype); //CarÀÇ ÀÎ½ºÅÏ½º°¡ ¾Æ´Ñ prototype ÀÚÃ¼¸¦ ³Ñ±èÀ¸·Î½á ¸ðµç Car Instance¿¡ ÀÏ°ýÀû¿ë
+		makeInsurable(Car.prototype); //Carì˜ ì¸ìŠ¤í„´ìŠ¤ê°€ ì•„ë‹Œ prototype ìžì²´ë¥¼ ë„˜ê¹€ìœ¼ë¡œì¨ ëª¨ë“  Car Instanceì— ì¼ê´„ì ìš©
 	~~~
  	
-# Chapter10. ¸Ê°ú ¼Â
+# Chapter10. ë§µê³¼ ì…‹
 
-## 10.1 ¸Ê
- - set(key, value) : ¸Ê¿¡ °ª Ãß°¡, °°Àº Å°¸¦ ´Ù½Ã setÇÏ´Â °æ¿ì value°¡ ±³Ã¼µÊ
- - get(key) : ¸Ê¿¡ ÀúÀåµÈ ÇØ´ç Å°°ª¿¡ ÇØ´çÇÏ´Â valueÀ» °¡Á®¿È
- - has(key) : ¸Ê¿¡ Å°°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
- - size ÇÁ·ÎÆÛÆ¼ : ¸ÊÀÇ »çÀÌÁî 
- - keys() : ¸ÊÀÇ Å°¸¦ Iterable·Î ¹ÝÈ¯
- - values() : ¸ÊÀÇ value¸¦ Iterable·Î ¹ÝÈ¯
- - entirs() : ¸ÊÀÇ key, value ½ÖÀ» ¹è¿­·Î ¹ÝÈ¯([0] : Å°, [1] : value)
- - delete(key) : ¸ÊÀÇ ¿ä¼Ò¸¦ Áö¿ò
- - clear() : ¸ÊÀÇ ¸ðµç ¿ä¼Ò¸¦ Áö¿ò
+## 10.1 ë§µ
+ - set(key, value) : ë§µì— ê°’ ì¶”ê°€, ê°™ì€ í‚¤ë¥¼ ë‹¤ì‹œ setí•˜ëŠ” ê²½ìš° valueê°€ êµì²´ë¨
+ - get(key) : ë§µì— ì €ìž¥ëœ í•´ë‹¹ í‚¤ê°’ì— í•´ë‹¹í•˜ëŠ” valueì„ ê°€ì ¸ì˜´
+ - has(key) : ë§µì— í‚¤ê°€ ì¡´ìž¬í•˜ëŠ”ì§€ í™•ì¸
+ - size í”„ë¡œí¼í‹° : ë§µì˜ ì‚¬ì´ì¦ˆ 
+ - keys() : ë§µì˜ í‚¤ë¥¼ Iterableë¡œ ë°˜í™˜
+ - values() : ë§µì˜ valueë¥¼ Iterableë¡œ ë°˜í™˜
+ - entirs() : ë§µì˜ key, value ìŒì„ ë°°ì—´ë¡œ ë°˜í™˜([0] : í‚¤, [1] : value)
+ - delete(key) : ë§µì˜ ìš”ì†Œë¥¼ ì§€ì›€
+ - clear() : ë§µì˜ ëª¨ë“  ìš”ì†Œë¥¼ ì§€ì›€
  
- ## 10.2 À§Å©¸Ê
- - Weak¸ÊÀÇ Å°´Â ¹Ýµå½Ã °´Ã¼¿©¾ß ÇÔ
- - WeakMapÀÇ Å°´Â °¡ºñÁö ÄÝ·º¼Ç¿¡ Æ÷ÇÔ µÉ¼ö ÀÖÀ½.
- - WeakMapÀº ÀÌÅÍ·¯ºíÀÌ ¾Æ´Ï¸ç clear ¸Þ¼­µå°¡ ¾øÀ½ 
+ ## 10.2 ìœ„í¬ë§µ
+ - Weakë§µì˜ í‚¤ëŠ” ë°˜ë“œì‹œ ê°ì²´ì—¬ì•¼ í•¨
+ - WeakMapì˜ í‚¤ëŠ” ê°€ë¹„ì§€ ì½œë ‰ì…˜ì— í¬í•¨ ë ìˆ˜ ìžˆìŒ.
+ - WeakMapì€ ì´í„°ëŸ¬ë¸”ì´ ì•„ë‹ˆë©° clear ë©”ì„œë“œê°€ ì—†ìŒ 
  ~~~javascript
  	const SecretHolder = (function(){
  		const secrets = new WeakMap();
@@ -205,14 +205,14 @@
  	console.log(`b secret ${b.getSecret()}`);
  ~~~
 
-## 10.3 ¼Â
-- ¼ÂÀº Áßº¹À» Çã¿ëÇÏÁö ¾Ê´Â µ¥ÀÌÅÍ ÁýÇÕ
-- add(value) : ¼Â¿¡ °ªÀ» Ãß°¡, ÀÌ¹Ì ÀÖ´Â °ªÀÎ °æ¿ì ¾Æ¹«ÀÏµµ ÀÏ¾î³ªÁö ¾ÊÀ½.
-- size ÇÁ·ÎÆÛÆ¼ : ¼ÂÀÇ »çÀÌÁî
-- delete(value) : ¼ÂÀÇ value Á¦°Å
+## 10.3 ì…‹
+- ì…‹ì€ ì¤‘ë³µì„ í—ˆìš©í•˜ì§€ ì•ŠëŠ” ë°ì´í„° ì§‘í•©
+- add(value) : ì…‹ì— ê°’ì„ ì¶”ê°€, ì´ë¯¸ ìžˆëŠ” ê°’ì¸ ê²½ìš° ì•„ë¬´ì¼ë„ ì¼ì–´ë‚˜ì§€ ì•ŠìŒ.
+- size í”„ë¡œí¼í‹° : ì…‹ì˜ ì‚¬ì´ì¦ˆ
+- delete(value) : ì…‹ì˜ value ì œê±°
  	
-## 10.4 À§Å©¼Â
-- WeakSetÀÇ Å°´Â ¹Ýµå½Ã °´Ã¼¿©¾ß ÇÔ
-- WeakSetÀÇ Å°´Â °¡ºñÁö ÄÝ·º¼Ç¿¡ Æ÷ÇÔ µÉ¼ö ÀÖÀ½.
-- WeakSetÀº ÀÌÅÍ·¯ºíÀÌ ¾Æ´Ï¸ç clear ¸Þ¼­µå°¡ ¾øÀ½ 
+## 10.4 ìœ„í¬ì…‹
+- WeakSetì˜ í‚¤ëŠ” ë°˜ë“œì‹œ ê°ì²´ì—¬ì•¼ í•¨
+- WeakSetì˜ í‚¤ëŠ” ê°€ë¹„ì§€ ì½œë ‰ì…˜ì— í¬í•¨ ë ìˆ˜ ìžˆìŒ.
+- WeakSetì€ ì´í„°ëŸ¬ë¸”ì´ ì•„ë‹ˆë©° clear ë©”ì„œë“œê°€ ì—†ìŒ  
  
