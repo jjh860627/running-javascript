@@ -69,7 +69,9 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의존하는 개념
 		
 	~~~
 	
-	- yield 문은, 
+	- yield 문은 제너레이터의 마지막 문이더라도 제너레이터를 끝내지 않음.
+	- 반대로 return 문은 done이 true가 되고 value는 return 이 반환하는 값이 됨.
+	- 따라서, 제너레이터에서는 중요한 값을 return 해서는 안됨.(yield를 써야함)
 	
 	~~~javascript
 	function* abc(){
@@ -108,7 +110,8 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의존하는 개념
 
 ## 13.3 함수로서의 함수
 함수는 항상 순수한 함수를 사용하는 습관을 들이는 것이 좋음
-- 순수한함수 : 함수에 입력이 들어가면 결과가 나오며, 같은 입력에는 같은 결과를 반환하는 함수
+- 순수한함수는 함수에 입력이 들어가면 결과가 나오며, 같은 입력에는 같은 결과를 반환하는 함수
+- 순수한함수를 쓰면 코드를 테스트하기 쉽고, 이해하기 쉽고, 재사용하기도 더 쉬움.
 ~~~ javascript
 	function isLeapYear(year){
 		if(year % 4 !== 0) return false;
@@ -141,3 +144,66 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의존하는 개념
 		}
 	})();
 ~~~
+
+## 13.4 함수도 객체다
+- 자바스크립트의 함수는 Function 객체의 인스턴스
+- typeof 함수 = "function"
+
+## 13.5 IIFE와 비동기적 코드
+- IIFE를 사용하는 사례중 하나는 비동기적 코드가 정확히 동작할 수 있도록 새 변수를 새 스코프에 만드는 것임.
+~~~javascript
+	var i;
+	for(i=5; i>=0; i--){
+		setTimeout(function(){
+			console.log(i===0 ? "go!" : i); //전역 스코프인 변수 값은 for 루프를 모두 돈 후의 값(-1) 
+		}, (5-i) * 1000);
+	}
+~~~
+~~~javascript
+	var i;
+	for(i=5; i>=0; i--){
+		(function(i){
+			setTimeout(function(){
+				console.log(i===0 ? "go!" : i); //전역 스코프인 변수 값은 for 루프를 모두 돈 후의 값(-1) 
+			}, (5-i) * 1000);
+		})(i);
+	}
+	
+	for(let i=5; i>=0; i--){
+		setTimeout(function(){
+			console.log(i===0 ? "go!" : i); //전역 스코프인 변수 값은 for 루프를 모두 돈 후의 값(-1) 
+		}, (5-i) * 1000);
+	}
+~~~
+
+## 13.6 변수로서의 함수
+- 함수도 다른 변수와 마찬가지로 이리저리 전달 할수 있음
+- 함수를 가리키는 변수를 만들어 별명을 정할 수 있음
+- 배열에 함수를 넣을 수 있음.
+- 함수를 객체의 프로퍼티로 사용가능
+- 함수를 함수에 전달 가능
+- 함수가 함수를 반환 가능
+- 함수를 매개변수로 받는 함수를 반환하는것도 가능
+~~~javascript
+	function addThreeSquareAddFiveTaskSquareRoot(x){
+		return Math.sqrt(Math.pow(x+3, 2)+5);
+	}
+	
+	const f = addThreeSquareAddFiveTaskSquareRoot;
+	const answer = (f(5) + f(2) + f(7));
+~~~
+## 13.6.1 배열 안의 함수
+## 13.6.2 함수에 함수 전달
+- 비동기적 프로그래밍을 위해 함수에 함수를 전달(콜백)
+~~~javascript
+	function sum(arr, f){
+		if(typeof f != 'function') f = x => x; //function이 없는 경우 매개변수 그대로 반환하는 함수 사용
+		return arr.reduce((a,x) => a += f(x), 0);
+	}
+	console.log(sum([1,2,3]));
+	console.log(sum([1,2,3], x => x*x));	
+	console.log(sum([1,2,3], x => Math.pow(x, 3)));
+~~~
+## 13.6.3 함수를 반환하는 함수
+	
+	
