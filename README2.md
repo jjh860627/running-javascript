@@ -219,7 +219,6 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의존하는 개념
 	console.log(sumOfSquares([1,2,3]));
 	console.log(sumOfCubes([1,2,3]));
 ~~~
-
 ##13.7 재귀
 자기 자신을 호출 하는 함수로 종료 조건이 있어야 함.
 ~~~javascript
