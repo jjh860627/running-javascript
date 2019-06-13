@@ -129,6 +129,7 @@ ES6에 처음 도입된 개념으로 이터레이터는 제너레이터에 의�
 		return colors[colorIndex]; //매개변수가 없어 입력이 같아도 결과가 매번 다름
 	}
 ~~~
+- 순수한 함수
 ~~~javascript
 	//Iterator로 바꾸는 것이 효과적임
 	const getRainbowColorIter = (function(){
