@@ -25,7 +25,7 @@
 	//날짜 문자열 해석(표준시를 기준으로 함)
 	new Date('June 14, 1903'); //지역 표준시로 생성됨
 	new Date('June 14, 1903 GMT-0000'); //GMT0000 = UTC
-	~~~	
+~~~	
 	
 ## 15.3 Moment.js
 - Javascript의 Date 객체의 기능이 불충분해 Moment.js 라이브러리를 사용하면 좋음
