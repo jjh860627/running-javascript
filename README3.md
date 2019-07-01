@@ -238,7 +238,8 @@
 ~~~ javascript
 	const html = 'HTML with <a href="\one">one line</a>, and some<area>test</area> Javascript.<script src="stuff.js">';
 	const matches = html.match(/area|a|link|script|source/ig); //대체 문자를 쓰는 경우 앞에서 부터 순서대로 찾기 때문에 a보다 area가 앞에 있어야 area를 찾을 수 있음
-	
+~~~
+
 ## 17.7 HTML 찾기
 - HTML을 정규식으로 완벽히 분석할 수 없음
 - HTML 분석 시에는 전용 파서를 사용해야 함.
@@ -258,6 +259,7 @@
 
 ## 17.9 자주 쓰는 문자셋
 - 자주 쓰이는 문자셋은 단축 표기가 있음.(클래스라고 부름)
+
 | 값 | 의미 | 기본값 |
 |---|:---:|---:|
 | `static` | 유형(기준) 없음 / 배치 불가능 | `static` |
