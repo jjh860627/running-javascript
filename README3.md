@@ -314,6 +314,9 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
 
 
 
+
+
+
 # Chapter18. 브라우저의 자바스크립트
 
 ## 18.1 ES5와 ES6
@@ -344,7 +347,7 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
 - 조상노드 : 부모, 부모의 부모등
 - 자손노드 : 자식, 자식의 자식등
 
-##18.4 get메서드
+## 18.4 get메서드
 - document.getElementById(id) : id를 이용해 요소를 찾음
 - document.getElementsByClassName(class) : class 이름에 해당하는 요소들을 찾음
 - document.getElementsByTagName(tag) : tag 이름에 해당하는 요소들을 찾음
