@@ -288,3 +288,22 @@
 | `?` | 0개 또는 1개. {0,1}과 동등 | `/[a-z]\d?/i` 는 글자가 있고 그다음에 숫자가 없거나 한개 있는 경우 일치 |
 | `*` | 갯수 상관없음 | `/[a-z]\d*/i`는 글자가 있고 그다음에 숫자가 없거나 있는 경우 일치 | |
 | `+` | 하나 이상 | `/[a-z]\d+/i` 는 글자가 있고 그다음에 숫자가 한개 이상 있는 경우 일치 |
+
+## 17.11 마침표와 이스케이프
+- 정규식에서 마침표(.) 는 줄바꿈 문자를 제외한 모든 문자에 일치하는 특수문자
+- 정규식 메타문자를 정규식 구문에 넣는 경우는 \를 앞에 붙인다.
+- 줄바꿈 문자도 포함하여 모든문자를 찾는 경우 "[\s\S]"를 쓰면 됨.
+~~~ javascript
+	const input = "Address: 333 Main St., Anywhere, NY, 55532. Phone: 555-555-2525.";
+	const match = input.match(/\d{5}.*/);
+~~~
+
+## 17.12 그룹
+
+~~~ javascript
+const html = '<link rel="stylesheet" href="http://insecure.com/stuff.css">\n' + 
+             '<link rel="stylesheet" href="https://secure.com/stuff.css">\n' + 
+			 '<link rel="stylesheet" href="//anything.com/stuff.css">\n';
+		
+const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
+~~~
