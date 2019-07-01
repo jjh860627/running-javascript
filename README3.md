@@ -299,11 +299,77 @@
 ~~~
 
 ## 17.12 그룹
+- 그룹을 사용하면 하위 표현식을 만들고 단위하나로 취급 가능
+- 캡쳐하지 않는 그룹은 (?:[subexpression]) 형태로 만듬
 
 ~~~ javascript
 const html = '<link rel="stylesheet" href="http://insecure.com/stuff.css">\n' + 
              '<link rel="stylesheet" href="https://secure.com/stuff.css">\n' + 
 			 '<link rel="stylesheet" href="//anything.com/stuff.css">\n';
 		
-const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
+const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig); 
 ~~~
+
+## 17.13 소극적 일치, 적극적 일치
+
+
+
+# Chapter18. 브라우저의 자바스크립트
+
+## 18.1 ES5와 ES6
+- 브라우저의 자바스크립트는 서버와 달리 사용자가 어떤 브라우저를 사용할지 모르기 때문에 당분간은 ES5를 사용해야함
+- ES6로 개발하고 트랜스 컴파일러를 사용하여 여러 브라우저를 지원
+
+## 18.2 문서 객체 모델
+- 문서객체모델(DOM)은 HTML 문서의 구조를 나타내는 표기법
+- DOM은 트리구조로 표현
+- DOM 트리는 노드로 구성
+- DOM 트리의 모든 노드는 Node 클래스의 인스턴스
+- 모든 노드에는 nodeType, nodeName 프로퍼티가 존재
+
+~~~ javascript
+	//모든 DOM 노드를 순회하면서 print 
+	function printDOM(node, prefix){
+		console.log(prefix + node.nodeName);
+		for(let i=0; i<node.childNodes.length; i++){
+			printDOM(node.childNodes[i], prefix + '\t');
+		}
+	}
+	printDOM(document, '');
+~~~
+
+## 18.3 용어사용
+- 부모노드 : 직접적인 부모
+- 자식노드 : 직접적인 자식
+- 조상노드 : 부모, 부모의 부모등
+- 자손노드 : 자식, 자식의 자식등
+
+##18.4 get메서드
+- document.getElementById(id) : id를 이용해 요소를 찾음
+- document.getElementsByClassName(class) : class 이름에 해당하는 요소들을 찾음
+- document.getElementsByTagName(tag) : tag 이름에 해당하는 요소들을 찾음
+- 위의 메서드들이 반환하는 컬렉션은 자바스크립트 배열이 아니라 HTMLCollection의 인스턴스임.
+
+## 18.5 DOM 요소 쿼리
+- querySelector와 querySelectorAll 메서드로 css 선택자를 이용해 요소를 찾을 수 있음
+- 요소 선택자 사이에 스페이스를 넣으면 특정 노드의 자손인 요소를 찾을 수 있음
+- 요소 선택자 사이에 '>'를 넣으면 특정 노드의 자식 노드를 찾을 수 있음.
+
+## 18.6 DOM 요소 조작
+- textContent 프로퍼티 : HTML 태그를 모두 제거하고 순수한 텍스트 데이터만 제공
+- innerHTML : HTML 태그를 그대로 제공
+
+~~~ javascript
+	const para = document.getElementsByTagName('p')[0];
+	para.textContent;
+	para.innerHTML;
+	para.textContent = "Modified HTML file"; 
+	para.innerHTML = "Modified HTML file"; 
+~~~
+
+## 18.7 새 DOM 요소 만들기
+- document.createElement(태그명) 을 이용하여 Element 생성
+- 생성된 Element는 DOM에 자동 추가 되지 않음.
+- 생성된 Element를 추가 하기 위해서는 아래 두 메소드를 이용
+	- insertBefore(삽입할 요소, 삽입할 위치를 지정하는 요소)
+	- appendChild(삽입할 요소) : 마지막 자식요소로 추가 됨
