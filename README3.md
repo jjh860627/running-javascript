@@ -4,7 +4,7 @@
 - 숫자형 표현(유닉스 타임스탬프)이 필요하면 valudOf() 메서드를 쓰면됨.
 	
 ## 15.2 Date 객체 만들기
-	~~~ javascript
+	~~~javascript
 	new Date(); //현재 날짜
 	
 	//년월일 시분초를 입력하여 생성
