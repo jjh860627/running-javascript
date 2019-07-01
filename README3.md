@@ -141,3 +141,139 @@
 	m.startOf('year'); //올해의 1월 1일로 셋팅
 	m.endOf('month'); //이달의 마지막 날로 셋팅
 ~~~
+
+## 15.11 사용자가 알기 쉬운 상대적 날짜
+- Moment.js를 이용하여 상대적 날짜 표시
+~~~ javascript
+	moment().subtract(10, 'seconds').fromNow();
+	moment().subtract(44, 'seconds').fromNow();
+	moment().subtract(45, 'minutes').fromNow();
+	moment().subtract(5, 'hours').fromNow();
+	moment().subtract(15, 'days').fromNow();
+~~~
+
+# Chapter17. 정규표현식
+- 정교한 문자열 매칭 기능 제공
+- 문자열 교체도 가능
+
+## 17.1 부분 문자열 검색과 대체
+- String.prototype 메서드에도 검색과 교체 기능이 존재
+~~~ javascript
+	const input = "As I was going to Saint Ives";
+	input.startsWith("As");
+	input.endsWith("Ives");
+	input.startsWith("going", 9); //인덱스 9에서 시작하는 것으로 간주
+	input.endsWith("going", 14); //인덱스 14를 문자열의 끝으로 간주
+	input.includes("going");
+	input.includes("going", 10); //인덱스 10에서부터 찾음
+	input.indexOf("going");
+	input.indexOf("going", 10); //인덱스 10에서 부터 찾으나 결과가 10부터 계산된 인덱스는 아님
+	input.indexOf("nope");
+	
+	//대소문자를 구분하지 않으므로 소문자로 변경하여 비교
+	input.toLowerCase().startsWith("as");
+	
+	//문자열 교체
+	const output = input.replace("going", "walking");
+~~~
+
+## 17.2 정규식 만들기
+- 정규식은 RegExp 클래스를 이용해서 생성
+- 슬래시로 감싼 형태인 리터럴 문법도 가능
+~~~ javascript
+	const re1 = /going/;
+	const re2 = new RegExp("going");
+	
+## 17.3 정규식 검색
+~~~ javascript
+	const input = "As I was going to Saint Ives";
+	//세글자 이상인 단어를 찾는 정규식
+	//i  : insensitive, g: global(전역으로 검색, 이 키워드가 없는 경우 일치하는 문자열을 찾는 동시에 검색을 중지함
+	const re = /\w{3,}/ig; 
+	
+	//String.prototype 의 메서드를 이용해서 찾는 방법
+	input.match(re);	//매칭하는 단어를 배열로 반환
+	input.search(re); //매칭하는 첫번째 단어의 인덱스를 반환
+	
+	//정규식(RegExp).prototype 의 메서드를 사용
+	re.exec(input); //exec 메소드는 마지막 찾은 위치를 기억해 두었다가 다시 호출하면 그 위치부터 찾음.
+	re.exec(input);
+	re.exec(input);
+	re.exec(input);
+	re.exec(input);
+	
+	re.test(input); //매칭하는 단어가 하나라도 존재하는지 여부
+
+	//정규식 리터럴을 그대로 사용해도 가능	
+	input.match(/\w{3,}/ig);
+	input.search(/\w{3,}/ig); 
+	/\w{3,}/ig.test(input);
+	/\w{3,}/ig.exec(input);
+~~~
+
+## 17.4 정규식을 사용한 문자열 교체
+- String.prototype.replace 메서드에도 정규식을 사용하여 문자열 교체가 가능
+
+~~~ javascript
+	const input = "As I was going to Saint Ives";
+	const output = input.replace(/\w{4,}/ig,'****');
+~~~
+
+## 17.5 입력 소비
+- 정규식은 입력 문자열을 소비하는 패턴
+- 정규식은 왼쪽에서 오른쪽으로 한글자씩 입력 문자열을 검증하는데 일치하지 않는 문자의 경우는 해당 문자를 소비하고 다음문자를 검증
+- 일치할 가능성이 있는 문자가 연속되는 경우 문자열을 소비하지 않다가 일치하는 문자를 만나는 경우 해당 문자열을 모두 소비
+- 정규식에 일치하지 않는 문자를 만나는 경우 맨 처음 한 문자만 소비하고 그 다음문자부터 다시 검증
+- 일단 소비한 글자에 다시 돌아오는 일은 없음
+~~~ javascript
+	const input = 'XJANLIONATUREJXEELNP';
+	input.match(/LION|ION|NATURE|EEL/g); 
+	// 위의 경과는 ["LION", "EEL"] 만 검색 됨.
+	// NATURE의 경우도 정규식에 일치하는 문자열이지만 LION을 찾으면서 LION문자들을 
+	// 소비하게 되기 때문에 NATURE의 시작문자인 N은 소비대상에서 제외되기 때문
+~~~
+
+## 17.6 대체
+- '|' 를 사용하여 여러 문자열을 대체하여 찾을 수 있음
+~~~ javascript
+	const html = 'HTML with <a href="\one">one line</a>, and some<area>test</area> Javascript.<script src="stuff.js">';
+	const matches = html.match(/area|a|link|script|source/ig); //대체 문자를 쓰는 경우 앞에서 부터 순서대로 찾기 때문에 a보다 area가 앞에 있어야 area를 찾을 수 있음
+	
+## 17.7 HTML 찾기
+- HTML을 정규식으로 완벽히 분석할 수 없음
+- HTML 분석 시에는 전용 파서를 사용해야 함.
+
+## 17.8 문자셋
+~~~ javascript
+	const beer99 = "99 bottles of beer on the wall take 1 down and pass it around -- 98 bottols of beer on the wall.";
+	let matches = beer99.match(/0|1|2|3|4|5|6|7|8|9/g);
+	
+	matches = beer99.match(/[0123456789]/g); //대체문자를 쓰지 않아도 됨
+	matches = beer99.match(/[0-9]/g); //범위를 사용
+	
+	matches = beer99.match(/\-[0-9a-z]/ig); //하이픈은 메타 문자에 포함되기 때문에 \를 붙여 줘야함
+	
+	matches = beer99.match(/^\-[0-9a-z]/ig); //^를 쓰는 경우 해당 문자셋을 제외하고 찾음
+~~~
+
+## 17.9 자주 쓰는 문자셋
+- 자주 쓰이는 문자셋은 단축 표기가 있음.(클래스라고 부름)
+| 값 | 의미 | 기본값 |
+|---|:---:|---:|
+| `static` | 유형(기준) 없음 / 배치 불가능 | `static` |
+| `relative` | 요소 자신을 기준으로 배치 |  |
+| `absolute` | 위치 상 부모(조상)요소를 기준으로 배치 |  |
+| `fixed` | 브라우저 창을 기준으로 배치 |  |
+
+값 | 의미 | 기본값
+---|:---:|---:
+`static` | 유형(기준) 없음 / 배치 불가능 | `static`
+`relative` | 요소 **자신**을 기준으로 배치 |
+`absolute` | 위치 상 **_부모_(조상)요소**를 기준으로 배치 |
+`fixed` | **브라우저 창**을 기준으로 배치 |
+
+
+
+
+
+~~~
