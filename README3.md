@@ -269,6 +269,10 @@
 | `\w` | [a-zA-Z_] |  |
 | `\W` | [^a-zA-Z_] |  |
 
+~~~ javascript
+	const messyPhone = '(505) 555-1515';
+	const neatPhone = messyPhone.replace(/\D/g, ''); //숫자를 제외한 모든 문자 제거
+~~~
 
 
 
