@@ -481,3 +481,89 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
 	}
 	refreshServerInfo();
 ~~~
+
+# Chapter19. 제이쿼리
+- DOM을 조작하거나 Ajax 요청을 실행할 때 널리 쓰이는 라이브러리
+
+## 19.1 맥가이버 나이프, 달러기호
+- 제이쿼리를 사용할 떄는 $나 jQuery를 사용
+
+## 19.2 제이쿼리 불러오기
+- CDN을 이용하여 제이쿼리를 추가
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+## 19.3 DOM 기다리기
+
+~~~ javascript
+	$(document).ready(function(){
+		//HTML을 모두 불러오고 DOM이 구성된 뒤 실행
+	});
+	
+	#function(){
+		//위와 동일
+	});
+~~~
+
+## 19.4 제이쿼리로 감싸 DOM 요소
+- 제이쿼리로 DOM을 조작할 때는 제이쿼리로 DOM을 감싼 제이쿼리 객체 사용
+- 제이쿼리는 주로 CSS 선택자를 이용하여 DOM을 조작
+- HTML을 매개변수로 제이쿼리 호출 시 새로운 DOM 요소가 생성
+
+~~~ javascript
+	const $newPara = $('<p>Newly created paragraph...</p>');
+~~~
+
+## 19.5 요소 조작
+~~~ javascript
+	$('p').text('ALL PARAGRAPHS REPLACED'); //textContent
+	$('p').html('<i>ALL</i> PARAGRAPHS REPLACED'); //innerHTML
+	
+	$('p').eq(2).html('<i>THIRD</i> PARAGRAPH REPLACED'); //요소 검색 결과 특정 요소 변경
+	
+	$('p').remove(); //요소 삭제
+	
+	$('p').append('<sup>*</sup>'); //자식 추가
+	$('p').after('<hr>').before('<hr>'); //자식 추가
+	
+	$('<sup>*</sup>').appendTo('p');
+	$('<hr>').insertBefore('p');
+	$('<hr>').insertAfter('p');
+	
+	${'p:odd').css('color', 'red');
+	
+	${'p').after('<hr>')
+		.append('<sup>*</sup>')
+		.filter(':odd')
+		.css('color','red');
+		
+	$('p').after('<hr>')
+		.not('.highlight')
+		.css('margin-left', '20px');
+		
+	$('p').before('<hr>')
+		.find('.code')
+		.css('font-size', '30px');
+~~~
+
+## 19.6 제이쿼리 취소
+- 제이쿼리로 감싸진 객체에서 DOM 요소에 접근하려면 get 메서드 사용(또는 [index] 사용)
+
+## 19.7 Ajax
+	
+~~~ javascript
+	function refreshServerInfo(){
+		const $serverInfo = $('.serverInfo');
+		$.get('http://localhost:7070').then(
+			//성공한 경우
+			function(data){
+				Object.keys(data).forEach(p => {
+					$(`[data-replace="${p}"]`).text(data[p]);
+				});
+			}, 
+			function(jqXHR, textStatus, err){
+				console.error(err);
+				$serverInfo.addClass('error').html('Error connecting to server');
+			}
+		);		
+	}
+~~~
