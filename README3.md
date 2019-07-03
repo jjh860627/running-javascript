@@ -390,15 +390,94 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
     
     function highlightParas(containing){
         if(typeof containing === 'string'){
-            containing = new RegExp(`\\b${containing}\\b', 'i');
+            containing = new RegExp(`\\b${containing}\\b`, 'i');
         }
         const paras = document.getElementsByTagName('p');
         console.log(paras);
         for(let p of paras){
-            if(!containing.text(p.textContent)) continue;
+            if(!containing.test(p.textContent)) continue;
             p.classList.add('highlight');
                 
         }
     }
-    hightlightParas('unique');
+    highlightParas('unique');
+    
+     function removeParaHighlights(){
+    		const paras = document.querySelectorAll('p.highlight');
+    		for(let p of paras){
+    			p.classList.remove('highlight');
+    		}
+     }
+~~~
+
+## 18.9 데이터 속성
+- 데이터 속성을 이용하여 요소에 임의의 데이터를 추가가능
+- HTML에서 데이터 속성(data-) 추가됨
+- document.querySelectorAll 을 이용해 [data-xxx="XXX"] 형태로 요소 검색 가능
+- 요소의 dataset 프로퍼티로 데이터 속성에 접근 가능
+- dataset 프로퍼티를 이용하여 데이터를 추가/삭제가 가능
+
+~~~ javascript
+	const highlightActions = document.querySelectorAll('[data-action="highlight"]');
+	console.log(highlightActions[0].dataset);
+	highlightActions[0].dataset.cool = "cool!!";
+~~~
+
+## 18.10 이벤트
+- 모든 요소에는 addEventListener 라는 메서드가 존재하며 이 메서드를 통해 이벤트가 일어났을 때 호출할 함수를 지정가능
+- 호출할 함수는 Event 타입의 객체 하나만 매개변수로 받으며 이벤트에 관한 정보가 모두 포함됨
+- 이벤트 모델은 이벤트 하나에 여러가지 함를 연결할 수 있도록 설계
+- 기본핸들러가 지정된 이벤트의 경우 event.preventDefault() 메서드를 호출하면 기본핸들러의 동작을 막을 수 있음
+~~~ javascript
+	const hightlightActions = document.querySelectorAll('[data-action="highlight"]');
+	for(let a of hightlightActions){
+		a.addEventListener('click', evt =>{
+			evt.preventDefault();
+			highlightParas(a.dataset.containing);
+	    });
+	}
+	
+	const removeHightlightActions = document.querySelectorAll('[data-action="removeHighlights"]');
+	for(let a of removeHightlightActions){
+		a.addEventListener('click', evt => {
+			evt.preventDefault();
+			removeParaHighlights();
+	    });
+	}
+~~~
+
+### 18.10.1 이벤트 버블링과 캡처링
+- HTML은 계층적이므로 이벤트를 여러곳에서 처리할 수 있음
+- 캡처링은 먼 조상부터 이벤트가 일어난 요소까지 내려오면서 이벤트 핸들 하는 방법
+- 버블링은 이벤트가 일어난 요소에서 시작해서 거슬러 올라가면서 이벤트 핸들 하는 방법
+- HTML 이벤트 모델에서는 캡처링 => 버블링 순서대로 이벤트를 핸들함
+- 이벤트 핸들러에서 다른 핸들러가 어떻게 호출 될지 영향을 주는 방법
+	- event.preventDefault() : 이벤트를 취소함. 취소된 이벤트는 계속 전달되기는 하지만 defaultPrevented 프로퍼티가 true 바뀐채 전달됨. 브라우저의 기본 이벤트 핸들러는 defaultPrevented 프로퍼티를 체크하고 이벤트를 실행하므로 실행하지만, 프로그래머가 추가한 이벤트 핸들러에서는 defaultPrevented를 체크하지 않았다면 계속 이벤트가 수행됨.
+	- event.stopPropagation() : 이벤트를 현재 요소에서 끝내고 더는 전달되지 않도록 막음.(현재 요소에 해당된 이벤트까지만 동작)
+	- event.stopImmediatePropagation() : 다른 이벤트 핸들러 및 현재 요소에 연결된 이벤트 핸들러도 동작하지 않게 막음.
+	
+
+## 18.11 Ajax
+- 비동기적 자바스크립트 + XML의 약어
+- 서버와 비동기적으로 통신하면 페이지 전체를 새로 고칠 필요 없이 서버에서 데이터를 받아 올 수 있음
+
+~~~ javascript
+	function refreshServerInfo(){
+		const req = new XMLHttpRequest();
+		req.addEventListener('load', function(){
+			const data = JSON.parse(this.responseText);
+			
+			const serverInfo = document.querySelector('.serverInfo');
+			
+			Object.keys(data).forEach(p => {
+				const replacements = serverInfo.querySelectorAll(`[data-replace="${p}"]`);
+				for(let r of replacements){
+					r.textContent = data[p];
+				}
+			});
+		});
+		req.open('GET', 'http://localhost:7070' , true);
+		req.send();
+	}
+	refreshServerInfo();
 ~~~
