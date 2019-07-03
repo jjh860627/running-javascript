@@ -380,11 +380,6 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
 	const endings = input.match(/\w+$/mg);
 ~~~
 
-const html = `<a class="foo" href="/foo" id="foo">Foo</a>\n` + 
-			`<A href="/bar" Class="bar">Bar</a>\n` + 
-			`<a href="/baz">Baz</a>\n` + 
-			`<a onclick="javascript:alert('qux!')" href="/qux">Qux</a>`;
-
 # Chapter18. 브라우저의 자바스크립트
 
 ## 18.1 ES5와 ES6
