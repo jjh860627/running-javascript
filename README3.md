@@ -311,11 +311,78 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
 ~~~
 
 ## 17.13 소극적 일치, 적극적 일치
+- 정규식은 기본적으로 적극적 일치로 검색(= 검색을 멈추기 전에 일치하는 것을 최대한 많이 찾으려는 속성)
+- 반복 메타문자(*, +, ?, {n}, {n,}, {n,m}) 뒤에 '?' 를 붙여 소극적으로 변경 가능
 
+~~~ javascript
+	//적극적인 경우에는 처음 <i> 를 만나면 </i>를 더는 찾을 수 없을 때까지 소비하지 않고 진행
+	const input = "Regex pros know the diffrence between\n" +
+				"<i>greedy</i> and <i>lazy</i> matching.";
+	input.replace(/<i>(.*)<\/i>/ig, '<strong>$1</strong>');
+	
+	// '?'를 붙여 적극적이 되면 </i>를 발견하는 즉시 일치하는 것을 찾았다고 판단하고 소비
+	input.replace(/<i>(.*)<\/i>/ig, '<strong>$1</strong>');
+~~~
 
+## 17.14 역참조
+- 그룹을 이용하면 역참조라는 테크닉을 쓸 수 있음
+- 서브그룹을 포함 해 정규식의 각 그룹은 숫자를 할당 받으며 "\그룹숫자" 를 써서 그룹을 참조할 수 있음.
 
+~~~ javascript
+	const promo = "Opening for XAAX is the dynamic GOOG! At the box office now!";
+	const bands = promo.match(/([A-Z])([A-Z])\2\1/g);
+	
+	const html = `<img alt='A "simple" example.'>` +
+			`<img alt="Don't abuse it!">`;
+	const matches = html.match(/<img alt=(['"]).*?\1/g);
+~~~
 
+## 17.15 그룹 교체
+- 교체할 문자열에서는 "$그룹숫자" 를 써서 그룹을 참조 할 수 있음
+- 숫자로 참조하는 것 외에도 아래와 같이 참조 가능
+	- $` : 일치하는 것 앞에 있는 전부를 참조
+	- $& : 일치하는 것 자체를 참조
+	- $' : 일치하는 것 뒤에 있는 전부를 참조
+	- $$ : 달러기호 자체를 표기
+	  
+~~~ javascript
+	let html = '<a class="nope" href="/yep">Yep</a>';
+	html = html.replace(/<a .*?(href=".*?").*?>/, '<a $1>');
+	
+	const input = "One two three";
+	input.replace(/two/, '($`)');
+	input.replace(/two/, '($&)');
+	input.replace(/two/, "($')");
+	input.replace(/two/, '($$)');
+~~~
+## 17.16 함수를 이용한 교체
 
+## 17.17 위치지정
+- 문자열의 시작과 끝을 의미하는 정규식 앵커 두가지
+	- ^ : 문자열의 시작을 의미
+	- $ : 문자열의 마지막을 의미
+	
+~~~ javascript
+	const input = "It was the best of times, it was the worst of times";
+	const beginning = input.match(/^\w+/g);
+	const end = input.match(/\w+$/g);
+	const everything = input.match(/^.*$/g);
+	const nomatch1 = input.match(/^best/ig);
+	const nomatch2 = input.match(/^worst/ig);
+~~~
+
+- 문자열에 줄바꿈 문자가 들어있다면 각줄의 처음과 끝을 찾을 수 있음(m 플래그 사용)
+
+~~~ javascript
+	const input = "One line\nTwo lines\nThree lines\nFour";
+	const beginnigs = input.match(/^\w+/mg);
+	const endings = input.match(/\w+$/mg);
+~~~
+
+const html = `<a class="foo" href="/foo" id="foo">Foo</a>\n` + 
+			`<A href="/bar" Class="bar">Bar</a>\n` + 
+			`<a href="/baz">Baz</a>\n` + 
+			`<a onclick="javascript:alert('qux!')" href="/qux">Qux</a>`;
 
 # Chapter18. 브라우저의 자바스크립트
 
