@@ -376,3 +376,29 @@ const matches = html.match(/(?:https?:?)?\/\/[a-z][a-z0-9-]+[a-z0-9]+/ig);
 - 생성된 Element를 추가 하기 위해서는 아래 두 메소드를 이용
 	- insertBefore(삽입할 요소, 삽입할 위치를 지정하는 요소)
 	- appendChild(삽입할 요소) : 마지막 자식요소로 추가 됨
+    
+## 18.8 요소 스타일링
+- 요소프러퍼티를 직접 수정하는 것보다는 CSS 클래스를 이용하는 편이 더 좋음.
+- 모든 요소에는 classList 프로퍼티가 존재
+- classList 프로퍼티의 add/remove 메서드로 클래스를 추가/삭제 가능
+
+~~~ javascript
+    .highlight {
+        background : #ff0;
+        font-style : italic;
+    }
+    
+    function highlightParas(containing){
+        if(typeof containing === 'string'){
+            containing = new RegExp(`\\b${containing}\\b', 'i');
+        }
+        const paras = document.getElementsByTagName('p');
+        console.log(paras);
+        for(let p of paras){
+            if(!containing.text(p.textContent)) continue;
+            p.classList.add('highlight');
+                
+        }
+    }
+    hightlightParas('unique');
+~~~
